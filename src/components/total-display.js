@@ -5,7 +5,9 @@ const TotalDisplay = props => (
   <div className="total">
     <div className="flex-between">
       <div>
-        -$
+        <i className="fa fa-minus" />
+        {" "}
+        <i className="fa fa-usd" />
         {" "}
         <input
           type="text"
@@ -16,7 +18,9 @@ const TotalDisplay = props => (
         />
       </div>
       <div>
-        +$
+        <i className="fa fa-plus" />
+        {" "}
+        <i className="fa fa-usd" />
         {" "}
         <input
           type="text"
