@@ -39,6 +39,11 @@ textarea {
   width: 300px;
   margin: auto;
   text-align: center;
+
+  label {
+    display: block;
+    margin-top: 10px;
+  }
 }
 
 input[type="text"],
