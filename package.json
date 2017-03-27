@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "serve ./build",
+    "test": "jest",
     "clean": "rimraf build",
     "serve": "NODE_ENV=dev webpack-dev-server",
     "build": "NODE_ENV=production npm run clean && webpack -p"
@@ -51,8 +52,12 @@
     "last 2 versions"
   ],
   "devDependencies": {
+    "babel-jest": "^19.0.0",
     "babel-plugin-transform-object-rest-spread": "^6.23.0",
+    "enzyme": "^2.8.0",
     "eslint-config-prettier": "^1.5.0",
-    "jest": "^19.0.2"
+    "jest": "^19.0.2",
+    "react-addons-test-utils": "^15.4.2",
+    "react-test-renderer": "^15.4.2"
   }
 }
