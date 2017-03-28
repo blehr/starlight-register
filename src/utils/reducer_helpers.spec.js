@@ -171,9 +171,17 @@ test("getItemNumberToUpdate return the item", () => {
     editItemNumber: 1
   };
   
+  const nextPrevState = {
+    order: arr,
+    currentItemNumber: 2,
+    editItemNumber: 0
+  };
+  
   const returnItem = helpers.getItemNumberToUpdate(prevState);
+  const nextReturnItem = helpers.getItemNumberToUpdate(nextPrevState);
   
   expect(returnItem).toEqual(item1);
+  expect(nextReturnItem).toEqual(item2);
   
 });
 
@@ -194,5 +202,25 @@ test("createOrMergeItem returns new order and currentItemNumber", () => {
   item3.itemNumber = 3;
   
   expect(result).toEqual({ order: [item1, item2, item3] , currentItemNumber: 3});
+  
+});
+
+test("createOrMergeItem returns merged order and currentItemNumber", () => {
+  const item1 = Object.assign({}, itemMock, { itemNumber: 1 });
+  const item2 = Object.assign({}, itemMock, { itemNumber: 2 });
+  const item3 = Object.assign({}, itemMock);
+  const arr = [item1, item2];
+  
+  const prevState = {
+    order: arr,
+    currentItemNumber: 2,
+    editItemNumber: 1
+  };
+  
+  const result = helpers.createOrMergeItem(prevState, item3);
+  
+  item3.itemNumber = 2;
+  
+  expect(result).toEqual({ order: [item1, item2] , currentItemNumber: 2});
   
 });
