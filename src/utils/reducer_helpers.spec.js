@@ -1,9 +1,8 @@
-/* globals expect  */
-const helpers = require("./reducer_helpers");
+/* globals expect test  */
+import * as helpers from "./reducer_helpers";
 import { itemMock } from "./utils";
 
-
-test('calcItemTotal works', () => {
+test("calcItemTotal works", () => {
   const item = {
     firstSideToppings: ["onions"],
     secondSideToppings: ["jalopenos"],
@@ -16,16 +15,15 @@ test('calcItemTotal works', () => {
     basePrice: 5.25,
     total: 0
   };
-  
+
   const itemTotal = helpers.calcItemTotal(item);
-  
+
   item.total = 6.75;
-  
+
   expect(item).toEqual(itemTotal);
-  
 });
 
-test('calcOrderTotal', () => {
+test("calcOrderTotal", () => {
   const initialState = {
     order: [],
     currentItemNumber: 0,
@@ -57,20 +55,19 @@ test('calcOrderTotal', () => {
     basePrice: 5.25,
     total: 6.75
   };
-  
+
   for (let i = 0; i < 3; i++) {
     initialState.order.push(item);
   }
-  
+
   const orderTotal = helpers.calcOrderTotal(initialState);
-  
+
   initialState.total = 23.25;
-  
+
   expect(23.25).toEqual(orderTotal);
-  
 });
 
-test('dealWithTopping add Topping', () => {
+test("dealWithTopping add Topping", () => {
   const item = {
     firstSideToppings: ["onions"],
     secondSideToppings: ["jalopenos"],
@@ -102,14 +99,13 @@ test('dealWithTopping add Topping', () => {
     key: null,
     createdAt: null
   };
-  
+
   const newItem = helpers.dealWithTopping(item, "pineapple", initialState);
-  
+
   expect(newItem.toppings).toEqual(["peperoni", "sausage", "pineapple"]);
-  
 });
 
-test('dealWithTopping remove Topping', () => {
+test("dealWithTopping remove Topping", () => {
   const item = {
     firstSideToppings: ["onions"],
     secondSideToppings: ["jalopenos"],
@@ -141,48 +137,44 @@ test('dealWithTopping remove Topping', () => {
     key: null,
     createdAt: null
   };
-  
-  const newItem = helpers.dealWithTopping(item, "pineapple", initialState);
-  
-  expect(newItem.toppings).toEqual(["peperoni", "sausage"]);
-  
-});
 
+  const newItem = helpers.dealWithTopping(item, "pineapple", initialState);
+
+  expect(newItem.toppings).toEqual(["peperoni", "sausage"]);
+});
 
 test("getItem return the item", () => {
   const item1 = Object.assign({}, itemMock, { itemNumber: 1 });
   const item2 = Object.assign({}, itemMock, { itemNumber: 2 });
   const arr = [item1, item2];
-  
+
   const returnItem = helpers.getItem(arr, 2);
-  
+
   expect(returnItem).toEqual(item2);
-  
 });
 
 test("getItemNumberToUpdate return the item", () => {
   const item1 = Object.assign({}, itemMock, { itemNumber: 1 });
   const item2 = Object.assign({}, itemMock, { itemNumber: 2 });
   const arr = [item1, item2];
-  
+
   const prevState = {
     order: arr,
     currentItemNumber: 2,
     editItemNumber: 1
   };
-  
+
   const nextPrevState = {
     order: arr,
     currentItemNumber: 2,
     editItemNumber: 0
   };
-  
+
   const returnItem = helpers.getItemNumberToUpdate(prevState);
   const nextReturnItem = helpers.getItemNumberToUpdate(nextPrevState);
-  
+
   expect(returnItem).toEqual(item1);
   expect(nextReturnItem).toEqual(item2);
-  
 });
 
 test("createOrMergeItem returns new order and currentItemNumber", () => {
@@ -190,19 +182,21 @@ test("createOrMergeItem returns new order and currentItemNumber", () => {
   const item2 = Object.assign({}, itemMock, { itemNumber: 2 });
   const item3 = Object.assign({}, itemMock);
   const arr = [item1, item2];
-  
+
   const prevState = {
     order: arr,
     currentItemNumber: 2,
     editItemNumber: 0
   };
-  
+
   const result = helpers.createOrMergeItem(prevState, item3);
-  
+
   item3.itemNumber = 3;
-  
-  expect(result).toEqual({ order: [item1, item2, item3] , currentItemNumber: 3});
-  
+
+  expect(result).toEqual({
+    order: [item1, item2, item3],
+    currentItemNumber: 3
+  });
 });
 
 test("createOrMergeItem returns merged order and currentItemNumber", () => {
@@ -210,17 +204,16 @@ test("createOrMergeItem returns merged order and currentItemNumber", () => {
   const item2 = Object.assign({}, itemMock, { itemNumber: 2 });
   const item3 = Object.assign({}, itemMock);
   const arr = [item1, item2];
-  
+
   const prevState = {
     order: arr,
     currentItemNumber: 2,
     editItemNumber: 1
   };
-  
+
   const result = helpers.createOrMergeItem(prevState, item3);
-  
+
   item3.itemNumber = 2;
-  
-  expect(result).toEqual({ order: [item1, item2] , currentItemNumber: 2});
-  
+
+  expect(result).toEqual({ order: [item1, item2], currentItemNumber: 2 });
 });
