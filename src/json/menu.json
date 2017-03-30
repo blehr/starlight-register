@@ -1,6 +1,6 @@
 {
   "pizza": {
-    "type": [
+    "size": [
       {
         "name": "Pizza",
         "size": "10\"",
@@ -21,9 +21,7 @@
         "basePrice": 10.95,
         "pricePerTopping": 1.50,
         "extraCheesePrice": 2.00
-      }
-    ],
-    "special": [
+      },
       {
         "name": "Taco Pizza",
         "size": "12\"",
@@ -38,8 +36,8 @@
         "pricePerTopping": 1.50,
         "extraCheesePrice": 2.00
       }
-    ], 
-    "toppings": [
+    ],
+     "toppings": [
       "pepperoni",
       "sausage",
       "ham",
@@ -57,7 +55,7 @@
   },
   "subs": {
     "size": [
-      {
+       {
         "name": "Sub",
         "size": "6\"",
         "basePrice": 4.50,
@@ -72,9 +70,9 @@
         "pricePerTopping": 0,
         "extraMeatPrice": 2.00,
         "extraCheesePrice": 2.00
-      }
+      }  
     ],
-    "type": [
+     "type": [
       "Italian",
       "Ham and Cheese",
       "Pizza",
@@ -105,15 +103,28 @@
         "name": "Salad",
         "size": "Large",
         "basePrice": 4.95
+      },
+      {
+        "name": "Taco Salad",
+        "size": "",
+        "basePrice": 8.5,
+        "disableFlag": true
       }
     ],
-    "special": [
-      {
-        "name": "Salad",
-        "size": "Large",
-        "basePrice": 8.5,
-        "type": "Taco Salad"
-      }
+     "toppings": [
+      "pepperoni",
+      "sausage",
+      "ham",
+      "bacon",
+      "onion",
+      "green pepper",
+      "mushroom",
+      "green olives",
+      "black olives",
+      "banana pepper",
+      "jalopeno pepper",
+      "pineapple",
+      "fresh tomato"
     ],
     "type": [
       "Garden",
@@ -125,8 +136,120 @@
       "Italian"
     ]
   },
-  "wings": [
-    
-  ]
-  
+  "wings": {
+    "size": [
+      {
+        "name": "Hot Wings",
+        "size": "6",
+        "basePrice": 5.50
+      },
+      {
+        "name": "BBQ Wings",
+        "size": "6",
+        "basePrice": 5.50
+      }
+    ]
+  },
+  "breadsticks": {
+    "size": [
+      {
+        "name": "Brdsticks",
+        "size": "regular",
+        "pricePerTopping": 1.10,
+        "basePrice": 4.50
+      },
+      {
+        "name": "Brdsticks",
+        "size": "w/cheese",
+        "pricePerTopping": 1.10,
+        "basePrice": 6.50
+      },
+      {
+        "name": "Brdsticks",
+        "size": "cinnamon",
+        "basePrice": 6.50,
+        "disableFlag": true
+      }
+    ],
+    "toppings": [
+      "pepperoni",
+      "sausage",
+      "ham",
+      "bacon",
+      "onion",
+      "green pepper",
+      "mushroom",
+      "green olives",
+      "black olives",
+      "banana pepper",
+      "jalopeno pepper",
+      "pineapple",
+      "fresh tomato"
+    ]
+  },
+  "nachos": {
+    "size": [
+      {
+        "name": "Nachos",
+        "size": "",
+        "basePrice": 8.50
+      }  
+    ],
+    "toppings": [
+      "chips",
+      "seasoned beef",
+      "cheese",
+      "black olives",
+      "jalopeno pepper",
+      "tomato",
+      "salsa",
+      "sour cream"
+    ]
+  },
+  "dessert": {
+    "size": [
+      {
+        "name": "Apple Pizza",
+        "size": "",
+        "basePrice": 6.50
+      },
+      {
+        "name": "Cherry Pizza",
+        "size": "",
+        "basePrice": 6.50
+      },
+      {
+        "name": "Ch/App Pizza",
+        "size": "",
+        "basePrice": 6.50
+      }
+    ],
+    "toppings": [
+      "icing"  
+    ]
+  },
+  "drinks": {
+    "size": [
+      {
+        "name": "Can",
+        "basePrice": 0.75,
+        "size": ""
+      },
+      {
+        "name": "6 Pack",
+        "basePrice": 4.50,
+        "size": ""
+      }
+    ],
+    "type": [
+      "Pepsi",
+      "Diet Pepsi",
+      "Coke",
+      "Diet Coke",
+      "Mountain Dew",
+      "Dr. Pepper",
+      "7UP",
+      "Bottled Water"
+    ]
+  }
 }

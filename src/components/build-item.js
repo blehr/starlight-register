@@ -2,7 +2,7 @@ import React, { Component, PropTypes } from "react";
 import { connect } from "react-redux";
 import MenuItem from "./menu-item";
 import TextInput from "./text-input";
-import Menu from "../json/menu2.json";
+import Menu from "../json/menu.json";
 import * as actions from "../actions/index";
 
 class BuildItem extends Component {
