@@ -25,8 +25,6 @@ label {
   font-size: 1.1em;
 }
 
-
-
 textarea {
   border-radius: 5px;
   padding: 5px;
@@ -119,6 +117,7 @@ a {
 
 .container {
   width: 100%;
+  min-height: 550px;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
@@ -137,6 +136,7 @@ header {
 .single-order {
   border: 2px solid $dark-blue;
   margin-bottom: 8px;
+  border-radius: 5px;
 }
 
 .single-order-bottom {
@@ -390,6 +390,11 @@ input[type="text"].total-offset {
 
 .text-input {
   text-align: center;
+}
+
+footer {
+  text-align: center;
+  padding-top: 25px;
 }
 
 @media screen and (max-width: 750px) {
