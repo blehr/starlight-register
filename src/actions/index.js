@@ -34,6 +34,9 @@ import {
   RESET_SET_ORDER_TO_PAY,
   PAY_ORDER_FLAG,
   SET_ORDER_TO_PAY,
+  TODAY_ORDERS,
+  YESTERDAY_ORDERS,
+  MONTH_ORDERS,
   DELETE_ORDER
 } from "./types";
 
@@ -332,7 +335,8 @@ export function saveOrderCredit(order) {
           }
         };
 
-        window.location = "square-commerce-v1://payment/create?data=" +
+        window.location =
+          "square-commerce-v1://payment/create?data=" +
           encodeURIComponent(JSON.stringify(dataParameter));
       });
       dispatch(resetOrderState());
@@ -358,7 +362,8 @@ export function saveOrderCredit(order) {
           }
         };
 
-        window.location = "square-commerce-v1://payment/create?data=" +
+        window.location =
+          "square-commerce-v1://payment/create?data=" +
           encodeURIComponent(JSON.stringify(dataParameter));
       });
       dispatch(resetOrderState());
@@ -399,9 +404,7 @@ export function saveOrderCash(order) {
 }
 
 export function deleteOrder(key) {
-  return dispatch => (
-    DB.ref("orders/" + key).remove()
-  )
+  return dispatch => DB.ref("orders/" + key).remove();
 }
 
 export function setOrderToPay(key, order) {
@@ -418,7 +421,7 @@ export function updateOrders(data) {
   };
 }
 
-export function retreiveOrders() {
+export function retrieveOrders() {
   const startAtTime = moment().startOf("day").valueOf();
   const orderRef = DB.ref("orders");
   return dispatch => {
@@ -428,11 +431,92 @@ export function retreiveOrders() {
       .on("value", snapshot => {
         const newarray = [];
         snapshot.forEach(childSnapshot => {
-          const key = childSnapshot.key;
           const value = childSnapshot.val();
-          newarray.push({ [`${key}`]: value });
+          value.key = childSnapshot.key;
+          newarray.push(value);
         });
         dispatch(updateOrders(newarray));
+      });
+  };
+}
+
+export function getTodayOrders(data) {
+  return {
+    type: TODAY_ORDERS,
+    payload: data
+  };
+}
+
+export function getYesterdaysOrders(data) {
+  return {
+    type: YESTERDAY_ORDERS,
+    payload: data
+  };
+}
+
+export function getMonthsOrders(data) {
+  return {
+    type: MONTH_ORDERS,
+    payload: data
+  };
+}
+
+export function retrieveOrdersToday() {
+  const startAtTime = moment().startOf("day").valueOf();
+  const orderRef = DB.ref("orders");
+  return dispatch => {
+    orderRef
+      .orderByChild("createdAt")
+      .startAt(startAtTime)
+      .on("value", snapshot => {
+        const newarray = [];
+        snapshot.forEach(childSnapshot => {
+          const value = childSnapshot.val();
+          value.key = childSnapshot.key;
+          newarray.push(value );
+        });
+        dispatch(getTodayOrders(newarray));
+      });
+  };
+}
+
+export function retrieveOrdersYesterday() {
+  const startAtTime = moment().startOf("day").subtract(1, "days").valueOf();
+  const endAtTime = moment().endOf("day").subtract(1, "days").valueOf();
+  const orderRef = DB.ref("orders");
+  return dispatch => {
+    orderRef
+      .orderByChild("createdAt")
+      .startAt(startAtTime)
+      .endAt(endAtTime)
+      .once("value", snapshot => {
+        const newarray = [];
+        snapshot.forEach(childSnapshot => {
+          const value = childSnapshot.val();
+          value.key = childSnapshot.key;
+          newarray.push(value );
+        });
+        dispatch(getYesterdaysOrders(newarray));
+      });
+  };
+}
+
+export function retrieveOrdersMonth() {
+  const startAtTime = moment().startOf("month").valueOf();
+  const endAtTime = moment().endOf("month").valueOf();
+  const orderRef = DB.ref("orders");
+  return dispatch => {
+    orderRef
+      .orderByChild("createdAt")
+      .startAt(startAtTime)
+      .endAt(endAtTime)
+      .once("value", snapshot => {
+        const newarray = [];
+        snapshot.forEach(childSnapshot => {
+          const value = childSnapshot.val();
+          newarray.push(value );
+        });
+        dispatch(getMonthsOrders(newarray));
       });
   };
 }

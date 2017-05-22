@@ -14,7 +14,7 @@ class OrderSidebar extends Component {
     this.handleDeleteOrder = this.handleDeleteOrder.bind(this);
   }
   componentDidMount() {
-    this.props.retreiveOrders();
+    this.props.retrieveOrders();
   }
   setPayOrderFlag() {
     this.props.setPayOrderFlag();
@@ -54,7 +54,7 @@ class OrderSidebar extends Component {
 OrderSidebar.propTypes = {
   savedOrders: PropTypes.array,
   markAsComplete: PropTypes.func,
-  retreiveOrders: PropTypes.func,
+  retrieveOrders: PropTypes.func,
   setPayOrderFlag: PropTypes.func,
   setOrderToPay: PropTypes.func,
   router: PropTypes.object,

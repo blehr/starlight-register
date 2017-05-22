@@ -37,7 +37,10 @@ export const SAVED_AMOUNT_OFF_TOTAL = 'saved_amount_off_total';
 export const SAVED_ADD_TIP = 'saved_add_tip';
 export const SET_ORDER_TO_PAY = 'set_order_to_pay';
 export const RESET_SET_ORDER_TO_PAY = 'reset_set_order_to_pay';
-export const SAVED_SET_DELIVERY = 'seved_set_delivery';
+export const SAVED_SET_DELIVERY = 'saved_set_delivery';
 export const PAY_ORDER_FLAG = 'pay_order_flag';
 export const DELETE_ORDER = 'delete_order';
+export const TODAY_ORDERS = 'today_orders';
+export const YESTERDAY_ORDERS = 'yesterday_orders';
+export const MONTH_ORDERS = 'month_orders';
 

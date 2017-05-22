@@ -1,25 +1,38 @@
 import React, { Component, PropTypes } from "react";
 import { connect } from "react-redux";
 import * as actions from "../actions";
-import OrderDisplay from "./order-display";
-
-
+import ParseOrders from "./parse_orders";
+import MonthChart from "./month_chart";
 
 class DashboardLayout extends Component {
-  constructor(props) {
-    super(props);
-
-  }
   componentDidMount() {
-    this.props.retreiveOrders();
+    // this.props.retrieveOrdersToday();
+    this.props.retrieveOrdersYesterday();
+    this.props.retrieveOrdersMonth();
   }
   render() {
     return (
-      <div className="flex-row" >
-        <div className="dashboard-col"><h1>Dash</h1></div>
-        <div className="dashboard-col"><h1>Dash</h1></div>
-        <div className="dashboard-col"><h1>Dash</h1></div>
-      </div>  
+      <div>
+        <div className="flex-dash-row">
+          <div className="dashboard-col">
+            <h1>Today</h1>
+            <ParseOrders orders={this.props.savedOrders} />
+          </div>
+          <div className="flex-dash-row">
+            <div className="dashboard-col">
+              <h1>Yesterday</h1>
+              <ParseOrders orders={this.props.yesterdayOrders} />
+            </div>
+          </div>
+          <div className="flex-dash-row">
+            <div className="dashboard-col">
+              <h1>Month</h1>
+              <ParseOrders orders={this.props.monthOrders} />
+            </div>
+          </div>
+        </div>
+        {/*<MonthChart orders={this.props.monthOrders} />*/}
+      </div>
     );
   }
 }
@@ -27,11 +40,17 @@ class DashboardLayout extends Component {
 DashboardLayout.propTypes = {
   savedOrders: PropTypes.array,
   markAsComplete: PropTypes.func,
-  retreiveOrders: PropTypes.func
+  retreiveOrders: PropTypes.func,
+  retrieveOrdersYesterday: PropTypes.func,
+  retrieveOrdersMonth: PropTypes.func,
+  yesterdayOrders: PropTypes.array,
+  monthOrders: PropTypes.array
 };
 
 const mapStateToProps = ({ savedOrders }) => ({
-  savedOrders: savedOrders.orders
+  savedOrders: savedOrders.orders,
+  yesterdayOrders: savedOrders.yesterdayOrders,
+  monthOrders: savedOrders.monthOrders
 });
 
 export default connect(mapStateToProps, actions)(DashboardLayout);

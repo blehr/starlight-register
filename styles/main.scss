@@ -284,6 +284,13 @@ a.active-link {
   justify-content: center;
   flex-wrap: wrap;
 }
+
+.flex-dash-row {
+  display: flex;
+  align-items: top;
+  justify-content: center;
+  flex-wrap: wrap;
+}
 .flex-between {
   display: flex;
   align-items: center;
@@ -395,6 +402,14 @@ input[type="text"].total-offset {
 footer {
   text-align: center;
   padding-top: 25px;
+}
+
+.dash-table td {
+  font-size: 1.2em;
+}
+
+.dash-table td:nth-child(even) {
+  text-align: right;
 }
 
 @media screen and (max-width: 750px) {

@@ -8,15 +8,14 @@ import PayNow from "./pay_now";
 const OrderDisplay = props => (
   <div>
     {props.orders.map(o => {
-      const keys = Object.keys(o);
-      const order = o[keys[0]];
-      const orderKey = keys[0];
+      const order = o;
+      const orderKey = o.key;
       return (
         <div
           className={
             order.completed ? "single-order completed" : "single-order"
           }
-          key={keys[0]}
+          key={orderKey}
         >
           {order.order &&
             order.order.map(i => (
