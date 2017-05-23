@@ -6,7 +6,6 @@ import MonthChart from "./month_chart";
 
 class DashboardLayout extends Component {
   componentDidMount() {
-    // this.props.retrieveOrdersToday();
     this.props.retrieveOrdersYesterday();
     this.props.retrieveOrdersMonth();
   }
@@ -27,11 +26,11 @@ class DashboardLayout extends Component {
           <div className="flex-dash-row">
             <div className="dashboard-col">
               <h1>Month</h1>
-              <ParseOrders orders={this.props.monthOrders} />
+              <ParseOrders orders={this.props.monthOrders} month />
             </div>
           </div>
         </div>
-        {/*<MonthChart orders={this.props.monthOrders} />*/}
+        <MonthChart orders={this.props.monthOrders} />
       </div>
     );
   }
@@ -40,7 +39,7 @@ class DashboardLayout extends Component {
 DashboardLayout.propTypes = {
   savedOrders: PropTypes.array,
   markAsComplete: PropTypes.func,
-  retreiveOrders: PropTypes.func,
+  retrieveOrders: PropTypes.func,
   retrieveOrdersYesterday: PropTypes.func,
   retrieveOrdersMonth: PropTypes.func,
   yesterdayOrders: PropTypes.array,
