@@ -38,8 +38,6 @@ class DashboardLayout extends Component {
 
 DashboardLayout.propTypes = {
   savedOrders: PropTypes.array,
-  markAsComplete: PropTypes.func,
-  retrieveOrders: PropTypes.func,
   retrieveOrdersYesterday: PropTypes.func,
   retrieveOrdersMonth: PropTypes.func,
   yesterdayOrders: PropTypes.array,

@@ -288,7 +288,7 @@ a.active-link {
 .flex-dash-row {
   display: flex;
   align-items: top;
-  justify-content: center;
+  justify-content: space-around;
   flex-wrap: wrap;
 }
 .flex-between {
@@ -303,10 +303,6 @@ a.active-link {
   align-items: center;
   justify-content: space-around;
   flex-wrap: wrap;
-}
-
-.dashboard-col {
-  width: 300px;
 }
 
 .create-item {
@@ -408,15 +404,22 @@ footer {
   display: inline-block;
   min-width: 150px;
   margin-right: 25px;
+
+    td {
+      font-size: 1.2em;
+    }
+
+    td:nth-child(even) {
+      text-align: right;
+    }
+
+    .emphasis {
+      padding: 8px 0;
+      font-weight: 700;
+    }
+
 }
 
-.dash-table td {
-  font-size: 1.2em;
-}
-
-.dash-table td:nth-child(even) {
-  text-align: right;
-}
 
 .bar-chart-div {
   width: 1000px;
@@ -433,6 +436,11 @@ footer {
   background-color: #ccc;
   position: relative;
   text-align: center;
+
+  &:hover {
+    background-color: $dark-blue;
+    font-size: 16px;
+  }
 }
 
 .bar-text {
