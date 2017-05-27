@@ -11,23 +11,19 @@ class DashboardLayout extends Component {
   }
   render() {
     return (
-      <div>
+      <div style={{width: "100%"}}>
         <div className="flex-dash-row">
-          <div className="dashboard-col">
+          <div>
             <h1>Today</h1>
             <ParseOrders orders={this.props.savedOrders} />
           </div>
-          <div className="flex-dash-row">
-            <div className="dashboard-col">
-              <h1>Yesterday</h1>
-              <ParseOrders orders={this.props.yesterdayOrders} />
-            </div>
+          <div>
+            <h1>Yesterday</h1>
+            <ParseOrders orders={this.props.yesterdayOrders} />
           </div>
-          <div className="flex-dash-row">
-            <div className="dashboard-col">
-              <h1>Month</h1>
-              <ParseOrders orders={this.props.monthOrders} month />
-            </div>
+          <div>
+            <h1>Month</h1>
+            <ParseOrders orders={this.props.monthOrders} month />
           </div>
         </div>
         <MonthChart orders={this.props.monthOrders} />

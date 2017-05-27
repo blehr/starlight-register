@@ -94,6 +94,7 @@ header a {
 }
 
 .site-wrapper {
+  width: 100%;
   max-width: 1024px;
   min-height: 768px;
   padding: 5px;
@@ -286,11 +287,35 @@ a.active-link {
 }
 
 .flex-dash-row {
+  width: 100%;
   display: flex;
   align-items: top;
   justify-content: space-around;
   flex-wrap: wrap;
 }
+
+
+.dash-table {
+  display: inline-block;
+  min-width: 150px;
+  margin-right: 25px;
+
+    td {
+      font-size: 1.2em;
+    }
+
+    td:nth-child(even) {
+      text-align: right;
+    }
+
+    .emphasis {
+      padding: 8px 0;
+      font-weight: 700;
+    }
+
+}
+
+
 .flex-between {
   display: flex;
   align-items: center;
@@ -399,27 +424,6 @@ footer {
   text-align: center;
   padding-top: 25px;
 }
-
-.dash-table {
-  display: inline-block;
-  min-width: 150px;
-  margin-right: 25px;
-
-    td {
-      font-size: 1.2em;
-    }
-
-    td:nth-child(even) {
-      text-align: right;
-    }
-
-    .emphasis {
-      padding: 8px 0;
-      font-weight: 700;
-    }
-
-}
-
 
 .bar-chart-div {
   width: 1000px;
